@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>톨리스트 - 우리 아이의 미래 키를 과학적으로 예측하세요</title>
+    <meta name="description" content="질병관리청 공식 데이터 기반, 3가지 과학적 방법으로 우리 아이의 예상 최종키를 정확하게 예측하세요. 무료 성장 관리 앱.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .number-circle {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 24px;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .timeline-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            position: absolute;
+            left: -8px;
+            top: 8px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .section-spacing {
+            padding: 100px 0;
+        }
+
+        @media (max-width: 768px) {
+            .section-spacing {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-900">
+
+    <!-- Hero Section -->
+    <section class="gradient-bg min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-20 left-20 w-72 h-72 bg-white rounded-full blur-3xl"></div>
+            <div class="absolute bottom-20 right-20 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-4xl mx-auto text-center text-white">
+                <div class="fade-in" style="animation-delay: 0.1s;">
+                    <h1 class="text-5xl md:text-7xl font-black mb-6 leading-tight">
+                        우리 아이,<br>키가 얼마나 클까요?
+                    </h1>
+                </div>
+
+                <div class="fade-in" style="animation-delay: 0.3s;">
+                    <p class="text-xl md:text-2xl mb-4 font-light opacity-90">
+                        매일 자라는 우리 아이를 보며 궁금하셨죠?
+                    </p>
+                    <p class="text-lg md:text-xl mb-12 font-medium">
+                        이제 과학적으로 정확하게 예측하세요
+                    </p>
+                </div>
+
+                <div class="fade-in" style="animation-delay: 0.5s;">
+                    <a href="https://play.google.com/store/apps/details?id=com.tallest.app"
+                       target="_blank"
+                       class="inline-flex items-center bg-white text-purple-700 px-10 py-5 rounded-full text-xl font-bold hover:bg-opacity-90 transition-all hover:scale-105 shadow-2xl">
+                        <svg class="w-8 h-8 mr-3" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+                        </svg>
+                        Google Play에서 무료 다운로드
+                    </a>
+                </div>
+
+                <div class="fade-in mt-8" style="animation-delay: 0.7s;">
+                    <p class="text-sm opacity-75">질병관리청 공식 데이터 기반 • 완전 무료</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white opacity-50 animate-bounce">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="section-spacing bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-black text-center mb-16">
+                    <span class="gradient-text">이런 고민</span> 있으신가요?
+                </h2>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white p-8 rounded-3xl shadow-lg card-hover">
+                        <div class="text-5xl mb-4">😰</div>
+                        <h3 class="text-xl font-bold mb-3">우리 아이 키, 작은 것 같은데...</h3>
+                        <p class="text-gray-600">또래 친구들보다 작아 보여서 걱정되시나요? 정확한 백분위를 알고 싶으신가요?</p>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-3xl shadow-lg card-hover">
+                        <div class="text-5xl mb-4">🤔</div>
+                        <h3 class="text-xl font-bold mb-3">나중에 키가 얼마나 클까?</h3>
+                        <p class="text-gray-600">성인이 되었을 때 최종 키가 궁금하신가요? 과학적으로 예측하고 싶으신가요?</p>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-3xl shadow-lg card-hover">
+                        <div class="text-5xl mb-4">📏</div>
+                        <h3 class="text-xl font-bold mb-3">키만 재고 끝?</h3>
+                        <p class="text-gray-600">단순히 키만 기록하는 게 아니라 성장 추세를 체계적으로 관리하고 싶으신가요?</p>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-3xl shadow-lg card-hover">
+                        <div class="text-5xl mb-4">🏥</div>
+                        <h3 class="text-xl font-bold mb-3">병원 가기 전에 미리 알고 싶어요</h3>
+                        <p class="text-gray-600">뼈나이 검사 전에 미리 예상키를 알아보고 싶으신가요?</p>
+                    </div>
+                </div>
+
+                <div class="text-center mt-16">
+                    <div class="inline-block bg-gradient-to-r from-purple-600 to-indigo-600 text-white px-8 py-4 rounded-full text-2xl font-bold shadow-xl">
+                        톨리스트가 모든 해답을 드립니다
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Three Methods Section -->
+    <section class="section-spacing bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-black text-center mb-6">
+                    3가지 과학적 방법으로
+                </h2>
+                <p class="text-xl text-center text-gray-600 mb-20">의학적으로 검증된 정확한 예측</p>
+
+                <div class="grid md:grid-cols-3 gap-10">
+                    <!-- Method 1 -->
+                    <div class="relative">
+                        <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-3xl card-hover h-full">
+                            <div class="number-circle mb-6 mx-auto">1</div>
+                            <div class="feature-icon text-center">📊</div>
+                            <h3 class="text-2xl font-bold mb-4 text-center">백분위 기반 예측</h3>
+                            <p class="text-gray-600 mb-4 text-center font-medium">질병관리청 KDCA 표준도표</p>
+                            <ul class="space-y-3 text-gray-700">
+                                <li class="flex items-start">
+                                    <span class="text-purple-600 mr-2">✓</span>
+                                    <span>현재 성장 추세 기반</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-purple-600 mr-2">✓</span>
+                                    <span>공식 LMS 방법 사용</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-purple-600 mr-2">✓</span>
+                                    <span>100명 중 우리 아이는 몇 등?</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Method 2 -->
+                    <div class="relative md:-mt-8">
+                        <div class="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-3xl card-hover h-full border-4 border-purple-200">
+                            <div class="number-circle mb-6 mx-auto">2</div>
+                            <div class="feature-icon text-center">🦴</div>
+                            <h3 class="text-2xl font-bold mb-4 text-center">뼈나이 기반 예측</h3>
+                            <p class="text-gray-600 mb-4 text-center font-medium">Greulich-Pyle + Bayley-Pinneau</p>
+                            <ul class="space-y-3 text-gray-700">
+                                <li class="flex items-start">
+                                    <span class="text-purple-600 mr-2">✓</span>
+                                    <span><strong>가장 정확한</strong> 예측 방법</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-purple-600 mr-2">✓</span>
+                                    <span>국제 표준 의학 방법</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-purple-600 mr-2">✓</span>
+                                    <span>실제 나이와 뼈나이 비교</span>
+                                </li>
+                            </ul>
+                            <div class="mt-4 bg-purple-100 text-purple-800 text-sm px-4 py-2 rounded-full text-center font-bold">
+                                Most Accurate
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Method 3 -->
+                    <div class="relative">
+                        <div class="bg-gradient-to-br from-green-50 to-teal-50 p-8 rounded-3xl card-hover h-full">
+                            <div class="number-circle mb-6 mx-auto">3</div>
+                            <div class="feature-icon text-center">🧬</div>
+                            <h3 class="text-2xl font-bold mb-4 text-center">유전키 예측</h3>
+                            <p class="text-gray-600 mb-4 text-center font-medium">MPH - 부모 키 평균</p>
+                            <ul class="space-y-3 text-gray-700">
+                                <li class="flex items-start">
+                                    <span class="text-purple-600 mr-2">✓</span>
+                                    <span>유전적 잠재키 계산</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-purple-600 mr-2">✓</span>
+                                    <span>부모 키 기반 예측</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-purple-600 mr-2">✓</span>
+                                    <span>성별 고려 정밀 계산</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-16 bg-gradient-to-r from-purple-100 to-indigo-100 p-8 rounded-3xl text-center">
+                    <p class="text-xl font-bold text-gray-800 mb-2">
+                        3가지 방법을 비교하면 더 정확해요!
+                    </p>
+                    <p class="text-gray-600">
+                        예측 차이가 크다면? 뼈나이 예측을 더 신뢰하세요
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section-spacing bg-gray-900 text-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-black text-center mb-6">
+                    왜 <span class="text-purple-400">톨리스트</span>인가요?
+                </h2>
+                <p class="text-xl text-center text-gray-400 mb-20">전문가 수준의 성장 관리를 무료로</p>
+
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="flex items-start space-x-6">
+                        <div class="flex-shrink-0 w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center text-3xl">
+                            🎯
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-3">의학적 정확성</h3>
+                            <p class="text-gray-400 leading-relaxed">
+                                질병관리청(KDCA) 공식 데이터와 국제 표준 예측 방법을 사용합니다. 한국 아동 특성에 최적화된 알고리즘으로 가장 정확한 예측을 제공합니다.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-6">
+                        <div class="flex-shrink-0 w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center text-3xl">
+                            📈
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-3">아름다운 성장 차트</h3>
+                            <p class="text-gray-400 leading-relaxed">
+                                과거-현재-미래를 한눈에 보여주는 직관적인 차트. 백분위 기준선과 예측선을 함께 표시하여 우리 아이의 성장을 쉽게 이해할 수 있습니다.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-6">
+                        <div class="flex-shrink-0 w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center text-3xl">
+                            🔄
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-3">다양한 분석</h3>
+                            <p class="text-gray-400 leading-relaxed">
+                                키뿐만 아니라 체중, BMI도 함께 관리. 3가지 예측 방법으로 교차 검증하여 가장 신뢰할 수 있는 결과를 제공합니다.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-6">
+                        <div class="flex-shrink-0 w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center text-3xl">
+                            💎
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold mb-3">완전 무료</h3>
+                            <p class="text-gray-400 leading-relaxed">
+                                모든 기능을 무료로 제공합니다. 숨겨진 비용 없이 우리 아이의 성장을 체계적으로 관리하세요.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chart Preview Section -->
+    <section class="section-spacing bg-gradient-to-br from-purple-50 to-indigo-50">
+        <div class="container mx-auto px-6">
+            <div class="max-w-5xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-black text-center mb-6">
+                    한눈에 보는 성장 분석
+                </h2>
+                <p class="text-xl text-center text-gray-600 mb-16">복잡한 의학 정보를 쉽고 아름답게</p>
+
+                <div class="bg-white p-8 md:p-12 rounded-3xl shadow-2xl">
+                    <div class="grid md:grid-cols-3 gap-8 mb-12">
+                        <div class="text-center">
+                            <div class="text-5xl font-black gradient-text mb-2">163.4cm</div>
+                            <div class="text-gray-600 font-medium">백분위 예측</div>
+                            <div class="text-sm text-gray-500 mt-1">현재 추세 유지</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-5xl font-black gradient-text mb-2">167.3cm</div>
+                            <div class="text-gray-600 font-medium">뼈나이 예측</div>
+                            <div class="text-sm text-purple-600 font-bold mt-1">가장 정확 ⭐</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-5xl font-black gradient-text mb-2">165.0cm</div>
+                            <div class="text-gray-600 font-medium">유전키 예측</div>
+                            <div class="text-sm text-gray-500 mt-1">부모 키 기반</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-purple-100 to-indigo-100 p-6 rounded-2xl">
+                        <div class="flex items-center justify-between flex-wrap gap-4">
+                            <div>
+                                <div class="text-sm text-gray-600 mb-1">현재 백분위</div>
+                                <div class="text-3xl font-black text-purple-700">상위 35%</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-sm text-gray-600 mb-1">100명 중</div>
+                                <div class="text-3xl font-black text-purple-700">35등</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-12 text-center">
+                    <p class="text-lg text-gray-600 mb-6">
+                        병원 방문 시 의사 선생님과 상담할 때 유용한 정보를 제공합니다
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section-spacing bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-black text-center mb-6">
+                    부모님들의 <span class="gradient-text">실제 후기</span>
+                </h2>
+                <p class="text-xl text-center text-gray-600 mb-20">이미 많은 부모님들이 사용하고 계세요</p>
+
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-gray-50 p-8 rounded-3xl card-hover">
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400 text-2xl">⭐⭐⭐⭐⭐</div>
+                        </div>
+                        <p class="text-gray-700 mb-6 leading-relaxed">
+                            "병원에서 뼈나이 검사를 받았는데, 톨리스트로 미리 예측한 값이랑 거의 똑같아서 놀랐어요!"
+                        </p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-purple-200 rounded-full flex items-center justify-center text-xl">
+                                👨
+                            </div>
+                            <div class="ml-3">
+                                <div class="font-bold">11세 남아 부모님</div>
+                                <div class="text-sm text-gray-500">Google Play 리뷰</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 p-8 rounded-3xl card-hover">
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400 text-2xl">⭐⭐⭐⭐⭐</div>
+                        </div>
+                        <p class="text-gray-700 mb-6 leading-relaxed">
+                            "여러 예측 방법을 비교할 수 있어서 좋아요. 단순히 키만 재는 게 아니라 성장을 이해하게 됐어요."
+                        </p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-purple-200 rounded-full flex items-center justify-center text-xl">
+                                👩
+                            </div>
+                            <div class="ml-3">
+                                <div class="font-bold">9세 여아 부모님</div>
+                                <div class="text-sm text-gray-500">Google Play 리뷰</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 p-8 rounded-3xl card-hover">
+                        <div class="flex items-center mb-4">
+                            <div class="text-yellow-400 text-2xl">⭐⭐⭐⭐⭐</div>
+                        </div>
+                        <p class="text-gray-700 mb-6 leading-relaxed">
+                            "차트가 정말 보기 좋고, 백분위 변화를 한눈에 볼 수 있어 좋습니다."
+                        </p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-purple-200 rounded-full flex items-center justify-center text-xl">
+                                👨
+                            </div>
+                            <div class="ml-3">
+                                <div class="font-bold">14세 남아 부모님</div>
+                                <div class="text-sm text-gray-500">Google Play 리뷰</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Start Section -->
+    <section class="section-spacing bg-gray-900 text-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-4xl md:text-5xl font-black text-center mb-6">
+                    시작하기 쉬워요
+                </h2>
+                <p class="text-xl text-center text-gray-400 mb-20">단 4단계면 바로 확인 가능</p>
+
+                <div class="space-y-8">
+                    <div class="flex items-start space-x-6 relative">
+                        <div class="timeline-dot"></div>
+                        <div class="flex-shrink-0 w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center text-2xl font-black">
+                            1
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold mb-2">앱 다운로드</h3>
+                            <p class="text-gray-400">Google Play에서 톨리스트를 무료로 다운로드하세요</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-6 relative">
+                        <div class="timeline-dot"></div>
+                        <div class="flex-shrink-0 w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center text-2xl font-black">
+                            2
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold mb-2">프로필 입력</h3>
+                            <p class="text-gray-400">아이 이름, 성별, 생년월일을 입력하세요</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-6 relative">
+                        <div class="timeline-dot"></div>
+                        <div class="flex-shrink-0 w-16 h-16 bg-purple-600 rounded-2xl flex items-center justify-center text-2xl font-black">
+                            3
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold mb-2">첫 키 기록</h3>
+                            <p class="text-gray-400">현재 키와 체중을 입력하세요</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-6 relative">
+                        <div class="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl flex items-center justify-center text-2xl">
+                            ✨
+                        </div>
+                        <div class="flex-1">
+                            <h3 class="text-2xl font-bold mb-2">예상키 확인!</h3>
+                            <p class="text-gray-400">자동으로 백분위와 예상 최종키를 계산해드립니다</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="section-spacing gradient-bg text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-10 right-10 w-96 h-96 bg-white rounded-full blur-3xl floating"></div>
+            <div class="absolute bottom-10 left-10 w-72 h-72 bg-white rounded-full blur-3xl floating" style="animation-delay: 1s;"></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl md:text-6xl font-black mb-6 leading-tight">
+                    우리 아이의 성장,<br>오늘부터 시작하세요
+                </h2>
+
+                <p class="text-xl md:text-2xl mb-12 opacity-90">
+                    과학적이고 정확한 예측으로 걱정을 안심으로 바꿔드립니다
+                </p>
+
+                <a href="https://play.google.com/store/apps/details?id=com.tallest.app"
+                   target="_blank"
+                   class="inline-flex items-center bg-white text-purple-700 px-12 py-6 rounded-full text-2xl font-bold hover:bg-opacity-90 transition-all hover:scale-105 shadow-2xl mb-8">
+                    <svg class="w-10 h-10 mr-4" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+                    </svg>
+                    무료로 시작하기
+                </a>
+
+                <div class="flex items-center justify-center space-x-8 text-sm opacity-75">
+                    <div class="flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        완전 무료
+                    </div>
+                    <div class="flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        의학적 검증
+                    </div>
+                    <div class="flex items-center">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        질병관리청 공식 데이터
+                    </div>
+                </div>
+
+                <div class="mt-12 pt-12 border-t border-white border-opacity-20">
+                    <p class="text-sm opacity-75 mb-2">더 궁금하신 점이 있으신가요?</p>
+                    <a href="https://blog.naver.com/fun-coding/224027228066"
+                       target="_blank"
+                       class="text-white hover:text-purple-200 transition-colors font-medium underline">
+                        톨리스트 블로그에서 자세히 알아보기 →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto text-center">
+                <div class="text-2xl font-black text-white mb-4">톨리스트</div>
+                <p class="mb-6">우리 아이의 건강한 성장을 함께합니다</p>
+
+                <div class="flex items-center justify-center space-x-8 mb-8">
+                    <a href="https://play.google.com/store/apps/details?id=com.tallest.app"
+                       target="_blank"
+                       class="hover:text-white transition-colors">
+                        Google Play
+                    </a>
+                    <a href="https://blog.naver.com/fun-coding/224027228066"
+                       target="_blank"
+                       class="hover:text-white transition-colors">
+                        블로그
+                    </a>
+                </div>
+
+                <div class="text-sm opacity-50">
+                    <p>질병관리청(KDCA) 공식 데이터 기반</p>
+                    <p class="mt-2">&copy; 2025 톨리스트. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.addEventListener('DOMContentLoaded', () => {
+            const cards = document.querySelectorAll('.card-hover');
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(30px)';
+                card.style.transition = 'all 0.6s ease-out';
+                observer.observe(card);
+            });
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Add parallax effect to hero section
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        const scrolled = window.pageYOffset;
+                        const parallaxElements = document.querySelectorAll('.gradient-bg');
+                        parallaxElements.forEach(el => {
+                            if (scrolled < window.innerHeight) {
+                                el.style.transform = `translateY(${scrolled * 0.5}px)`;
+                            }
+                        });
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
